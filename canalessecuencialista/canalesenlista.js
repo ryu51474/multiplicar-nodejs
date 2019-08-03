@@ -14,7 +14,7 @@ let listarTabla=(base,limite =10 /* = 10 --> para darle un valor por defecto per
     }
 };
 
-let crearArchivoLista=(izquierda, limite=10)=>{
+let crearArchivo=(base, limite=10)=>{
     return new Promise((resolve, reject)=>{
         if (!Number(base)){
             reject(`el valor introducido ${base} no es un numero`);
@@ -28,12 +28,12 @@ let crearArchivoLista=(izquierda, limite=10)=>{
         fs.writeFile(`tablas/tabla del ${base} al ${limite}.txt`, data, (err) => {
             if (err) return reject(err);
             else
-            resolve(`El archivo: `+`tabla del ${base}.txt con limite ${limite} ha sido creado`.rainbow.bgCyan);
+                resolve(`El archivo: `+`tabla del ${base}.txt con limite ${limite} ha sido creado`.rainbow.bgCyan);
         });
     })
 };
 
 module.exports={
-    listarTabla,
-    crearArchivoLista
+    crearArchivo,
+    listarTabla
 };

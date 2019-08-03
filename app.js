@@ -3,6 +3,7 @@
 // const fs = require('express'); -->paquete que no esta en libreria nativa pero que tambien se importará
 // const fs = require('./fs'); --> o const fs = require('../fs'); --> importacion de archivos
 const { crearArchivo, listarTabla }= require('./multiplicar/multiplicar');
+// const {listaCanales}=require('./canalessecuencialista/canalesenlista');
 const argv=require('./config/yargs').argv;
 const colors = require('colors');
 
@@ -17,10 +18,13 @@ switch (comando){
     case 'crear':
         crearArchivo(argv.base,argv.limite)
             .then(archivo=>console.log(`Archivo creado: ${archivo}`))
-            .catch(error=>console.log(error));
+            .catch(error=>console.log(error.bgWhite.red));
+        break;
+    case []:
+        console.log(`el comando ${ comando } no esta disponible entre las opciones\n use nmp app --help para ver los comandos`);
         break;
     default:
-        console.log('comando no reconocido')
+        console.log('comando no reconocido,\npuede usar los comandos listar para ver los parametros definidos \no crear para crear parametro.\nejemplo de uso: node app listar -b={numero} -l{limite de tabla}'.red.bgWhite);
 }
 
 
